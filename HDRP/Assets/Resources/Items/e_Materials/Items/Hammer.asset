@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c2d0245e81b55c41a92cb7e26748ec8, type: 3}
+  m_Name: Hammer
+  m_EditorClassIdentifier: 
+  name: "M\u0142otek"
+  description: Your description here
+  prefab: {fileID: 6636202879140795941, guid: 6f65657080d3887438c8eafca3a43987, type: 3}
+  type: 4
+  icon: {fileID: 21300000, guid: e450c5c1bb7bc184bb82f02e4cecc42d, type: 3}
+  isDefaultImte: 0
+  value: 0
+  craftingID: 1
