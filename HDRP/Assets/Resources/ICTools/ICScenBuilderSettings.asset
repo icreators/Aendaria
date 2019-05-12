@@ -21,21 +21,21 @@ MonoBehaviour:
         AddPosition: {x: 0, y: 0, z: 0}
         rotation:
           locked: 0
-          random: 0
+          random: 1
           randX: 0
-          randY: 0
+          randY: 1
           randZ: 0
-          min: {x: 0, y: 0, z: 0}
+          min: {x: 0, y: -360, z: 0}
           max: {x: 360, y: 360, z: 360}
           normal: {x: 0, y: 0, z: 0}
         scale:
-          locked: 0
-          random: 0
+          locked: 1
+          random: 1
           randX: 0
           randY: 0
           randZ: 0
           min: {x: 1, y: 1, z: 1}
-          max: {x: 10, y: 10, z: 10}
+          max: {x: 1.2621365, y: 10, z: 10}
           normal: {x: 1, y: 1, z: 1}
       gameObject: {fileID: 7382281825886590482, guid: 23a48ace54564d042915974cd015fcce,
         type: 3}
@@ -69,21 +69,21 @@ MonoBehaviour:
         AddPosition: {x: 0, y: 0, z: 0}
         rotation:
           locked: 0
-          random: 0
+          random: 1
           randX: 0
-          randY: 0
+          randY: 1
           randZ: 0
           min: {x: 0, y: 0, z: 0}
           max: {x: 360, y: 360, z: 360}
           normal: {x: 0, y: 0, z: 0}
         scale:
-          locked: 0
-          random: 0
+          locked: 1
+          random: 1
           randX: 0
-          randY: 0
+          randY: 1
           randZ: 0
           min: {x: 1, y: 1, z: 1}
-          max: {x: 10, y: 10, z: 10}
+          max: {x: 1.2621365, y: 1.349515, z: 10}
           normal: {x: 1, y: 1, z: 1}
       gameObject: {fileID: 194774847256970194, guid: 4e0789ea40d248c4e8818f63e8ffc920,
         type: 3}
@@ -117,21 +117,21 @@ MonoBehaviour:
         AddPosition: {x: 0, y: 0, z: 0}
         rotation:
           locked: 0
-          random: 0
+          random: 1
           randX: 0
-          randY: 0
+          randY: 1
           randZ: 0
-          min: {x: 0, y: 0, z: 0}
+          min: {x: -360, y: -360, z: 0}
           max: {x: 360, y: 360, z: 360}
           normal: {x: 0, y: 0, z: 0}
         scale:
-          locked: 0
-          random: 0
+          locked: 1
+          random: 1
           randX: 0
           randY: 0
           randZ: 0
           min: {x: 1, y: 1, z: 1}
-          max: {x: 10, y: 10, z: 10}
+          max: {x: 1.2621365, y: 10, z: 10}
           normal: {x: 1, y: 1, z: 1}
       gameObject: {fileID: 9108096830299560767, guid: 08368290095958843875f56d08609f1b,
         type: 3}
@@ -165,21 +165,21 @@ MonoBehaviour:
         AddPosition: {x: 0, y: 0, z: 0}
         rotation:
           locked: 0
-          random: 0
+          random: 1
           randX: 0
-          randY: 0
+          randY: 1
           randZ: 0
           min: {x: 0, y: 0, z: 0}
           max: {x: 360, y: 360, z: 360}
           normal: {x: 0, y: 0, z: 0}
         scale:
           locked: 0
-          random: 0
-          randX: 0
+          random: 1
+          randX: 1
           randY: 0
           randZ: 0
           min: {x: 1, y: 1, z: 1}
-          max: {x: 10, y: 10, z: 10}
+          max: {x: 1.349515, y: 10, z: 10}
           normal: {x: 1, y: 1, z: 1}
       gameObject: {fileID: 3229977665062394502, guid: f6338888e939692438f708c2d2e9691c,
         type: 3}
@@ -189,9 +189,9 @@ MonoBehaviour:
         AddPosition: {x: 0, y: 0, z: 0}
         rotation:
           locked: 0
-          random: 0
+          random: 1
           randX: 0
-          randY: 0
+          randY: 1
           randZ: 0
           min: {x: 0, y: 0, z: 0}
           max: {x: 360, y: 360, z: 360}
@@ -213,9 +213,9 @@ MonoBehaviour:
         AddPosition: {x: 0, y: 0, z: 0}
         rotation:
           locked: 0
-          random: 0
+          random: 1
           randX: 0
-          randY: 0
+          randY: 1
           randZ: 0
           min: {x: 0, y: 0, z: 0}
           max: {x: 360, y: 360, z: 360}
@@ -372,7 +372,7 @@ MonoBehaviour:
       normal: {x: 1, y: 1, z: 1}
   parent: {fileID: 0}
   selectedCategory: 0
-  selectedPrefab: 9
+  selectedPrefab: 8
   AddingToParent: 1
   autoSelectionPlacedObjects: 0
   prefabPreview: 1
