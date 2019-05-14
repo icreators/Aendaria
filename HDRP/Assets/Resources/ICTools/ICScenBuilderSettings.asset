@@ -29,13 +29,13 @@ MonoBehaviour:
           max: {x: 360, y: 360, z: 360}
           normal: {x: 0, y: 0, z: 0}
         scale:
-          locked: 1
+          locked: 0
           random: 1
-          randX: 0
+          randX: 1
           randY: 0
           randZ: 0
           min: {x: 1, y: 1, z: 1}
-          max: {x: 2.048544, y: 10, z: 10}
+          max: {x: 2.617978, y: 10, z: 10}
           normal: {x: 1, y: 1, z: 1}
       gameObject: {fileID: 7382281825886590482, guid: 23a48ace54564d042915974cd015fcce,
         type: 3}
