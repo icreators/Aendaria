@@ -8,7 +8,6 @@ public class InventoryUI : MonoBehaviour
 
     Inventory inventory;
 
-    
     //List<InventorySlot> slots = new List<InventorySlot>(); 
 
     void Start()
@@ -23,9 +22,19 @@ public class InventoryUI : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory"))
         {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
+            if (!InterfaceManager.instance.isAnyActiveInterface)
+            {
+                InterfaceManager.instance.isAnyActiveInterface = true;
 
-            inventory.InventoryRefresh();
+                inventoryUI.SetActive(true);
+                inventory.InventoryRefresh();
+            }
+            else
+            {
+                InterfaceManager.instance.isAnyActiveInterface = false;
+
+                inventoryUI.SetActive(false);
+            }
         }
     }
 
