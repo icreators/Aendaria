@@ -26,6 +26,11 @@ public class PlayerAnimation : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();   
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab)) InterfaceManager.instance.DrawSword = !InterfaceManager.instance.DrawSword; //#optymalnie
+    }
+
     void FixedUpdate()
     {
         inputY = Input.GetAxis("Vertical");
@@ -104,14 +109,20 @@ public class PlayerAnimation : MonoBehaviour
         if (Input.GetButton("Crouch")) animator.SetBool("IsCrouching", true);
         else animator.SetBool("IsCrouching", false);
 
-        if (Input.GetMouseButtonDown(0))
+        if (InterfaceManager.instance.DrawSword)
         {
-            int xd = Random.Range(0, 2);
-            if (xd == 1) xd = 2;
-            animator.SetInteger("AttackNumber", xd);
-            animator.SetTrigger("BaseAttack");
+            if (!InterfaceManager.instance.isAnyActiveInterface)
+            {
+                if (Input.GetMouseButtonDown(0)) // Do refaktoryzacji to gowno xd /jk
+                {
+                    int xd = Random.Range(0, 2);// Dodac funkcje RandomAnimation() i przepisac ten kod dam
+                    if (xd == 1) xd = 2;
+                    animator.SetInteger("AttackNumber", xd);
+                    animator.SetTrigger("BaseAttack");
+                }
+                if (Input.GetMouseButton(1)) animator.SetBool("ShieldBlock", true);
+                else animator.SetBool("ShieldBlock", false);
+            }
         }
-        if (Input.GetMouseButton(1)) animator.SetBool("ShieldBlock", true);
-        else animator.SetBool("ShieldBlock", false);
     }
 }

@@ -29,11 +29,11 @@ public class CharacterStats : MonoBehaviour
         animator = gameObject.GetComponentInParent<Animator>();
 
         //healthSlide.maxValue = maxHealth;
-        healthSlideBG.maxValue = maxHealth;
+        //healthSlideBG.maxValue = maxHealth;
 
         currentHealth = maxHealth;
         //healthSlide.value = currentHealth;
-        healthSlideBG.value = currentHealth;
+        //healthSlideBG.value = currentHealth;
 
         //ui.gameObject.SetActive(true);
     }
