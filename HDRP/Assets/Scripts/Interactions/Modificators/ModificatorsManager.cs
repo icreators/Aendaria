@@ -11,32 +11,21 @@ public class ModificatorsManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        playerStats = GameObject.Find("Player").transform.GetComponent<PlayerStats>();
     }
 
     #endregion
 
-    #region Modificators
+    public PlayerStats playerStats;
 
-    Dictionary<string, int> modificatorType = new Dictionary<string, int>();
-
-    public void Avake()
-    { 
-        modificatorType.Add("health", 1);
-        modificatorType.Add("armor", 1);
-        modificatorType.Add("damage", 1);
-        modificatorType.Add("magicDamage", 1);
-        modificatorType.Add("moveSpeed", 1);
-    }
-
-    #endregion
-
-    public void ChangeModificator(string name, int howMuch, int duration = 0, bool incrementally = false)
+    public void ChangeModificator(string name, int howMuch, int duration = 0, bool incrementally = false, bool modification = true)
     {
         if (duration == 0) //forever
         {
-            ChangeM(name, howMuch);
+            ChangeM(name, howMuch, modification);
         }
-        if (incrementally)
+        else if (incrementally)
         {
             StartCoroutine(AddIncrementally(name, howMuch, duration));
         }
@@ -64,8 +53,15 @@ public class ModificatorsManager : MonoBehaviour
         ChangeM(name, -howMuch);
     }
 
-    void ChangeM(string name, int howMuch)
+    void ChangeM(string name, int howMuch, bool mod = true)
     {
-        modificatorType[name] += howMuch;
+        if (mod)
+        {
+            playerStats.ChangeModificator(name, howMuch);
+        }
+        else
+        {
+            playerStats.ChangeCurrentStat(name, howMuch);
+        }
     }
 }

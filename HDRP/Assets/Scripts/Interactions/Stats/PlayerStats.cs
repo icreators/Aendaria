@@ -16,8 +16,8 @@ public class PlayerStats : CharacterStats
         if (newItem != null)
         {
             //armor.AddModifier(newItem.armorModifier);
-            
-            armorSlide.value = armor.GetValue();
+
+            armorSlide.value = GetCurrentStat("armor");
         }
 
         if (oldItem != null)
