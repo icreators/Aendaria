@@ -11,7 +11,7 @@ public class CollisionChecker : MonoBehaviour
 
     public void Check()
     {
-        StartCoroutine(Checking());
+        //StartCoroutine(Checking());
         Debug.Log(type);
     }
 

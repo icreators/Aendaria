@@ -38,6 +38,8 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    
+
     public void DeleteSlots()
     {
         //slots = null;

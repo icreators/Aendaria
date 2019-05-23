@@ -28,7 +28,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab)) InterfaceManager.instance.DrawSword = !InterfaceManager.instance.DrawSword; //#optymalnie
+        //if (Input.GetKeyDown(KeyCode.Tab)) InterfaceManager.instance.DrawSword = !InterfaceManager.instance.DrawSword; //#optymalnie
     }
 
     void FixedUpdate()
