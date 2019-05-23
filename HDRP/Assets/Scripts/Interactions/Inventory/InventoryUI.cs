@@ -22,23 +22,26 @@ public class InventoryUI : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory"))
         {
-            if (!InterfaceManager.instance.isAnyActiveInterface)
-            {
-                InterfaceManager.instance.isAnyActiveInterface = true;
-
-                inventoryUI.SetActive(true);
-                inventory.InventoryRefresh();
-            }
-            else
-            {
-                InterfaceManager.instance.isAnyActiveInterface = false;
-
-                inventoryUI.SetActive(false);
-            }
+            OpenInventory();
         }
     }
 
-    
+    public void OpenInventory()
+    {
+        if (!InterfaceManager.instance.isAnyActiveInterface)
+        {
+            InterfaceManager.instance.isAnyActiveInterface = true;
+
+            inventoryUI.SetActive(true);
+            inventory.InventoryRefresh();
+        }
+        else
+        {
+            InterfaceManager.instance.isAnyActiveInterface = false;
+
+            inventoryUI.SetActive(false);
+        }
+    }
 
     public void DeleteSlots()
     {

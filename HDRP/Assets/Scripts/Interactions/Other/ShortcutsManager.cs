@@ -15,6 +15,7 @@ public class ShortcutsManager : MonoBehaviour
 
     private void Start()
     {
+        GameObject.Find("Interfaces/Shortcuts").SetActive(true);
         shortcutInterface = GameObject.Find("Interfaces/Shortcuts").GetComponent<Canvas>();
 
         shortcutInterface.enabled = false;
@@ -32,7 +33,7 @@ public class ShortcutsManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !InterfaceManager.instance.isAnyActiveInterface)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.lockState = CursorLockMode.None;
@@ -41,13 +42,20 @@ public class ShortcutsManager : MonoBehaviour
 
             InterfaceManager.instance.isAnyActiveInterface = true;
         }
-        else if (Input.GetKeyUp(KeyCode.Tab))
+        else if (Input.GetKeyUp(KeyCode.Tab) && shortcutInterface.isActiveAndEnabled)
         {
             shortcutInterface.enabled = false;
 
             InterfaceManager.instance.isAnyActiveInterface = false;
 
-            Debug.Log("Przechodze do okna: " + shortcutChoise);
+            Debug.Log("Wybrałeś: " + shortcutChoise);
+
+            switch ((int)shortcutChoise)
+            {
+                case 1: transform.GetComponent<InventoryUI>().OpenInventory();
+                    break;
+                // Dodac reszte interfejsow
+            }
         }
     }
 
