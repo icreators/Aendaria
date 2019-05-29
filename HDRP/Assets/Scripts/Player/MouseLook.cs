@@ -39,7 +39,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject()) return;
+        if (InterfaceManager.instance.isAnyActiveInterface) return;
         else
         {
 
