@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Eliksir zdrowia
   description: "Przywraca 20 punkt\xF3w zdrowia"
+  weight: 1
   prefab: {fileID: 7554339535350742363, guid: 047e765fbac7e564b85610980bbeb643, type: 3}
   type: 2
   icon: {fileID: 21300000, guid: c9e761be02e768040b5a28ed6b19d68f, type: 3}

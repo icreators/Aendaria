@@ -19,7 +19,9 @@ public class Inventory : MonoBehaviour
     #endregion
 
     public List<Item> items = new List<Item>();     // Item List
-    public int space = 2;
+    private static float baseWeightLimit = 100;
+    private float weightLimit = baseWeightLimit;
+    private float currentWeight = 0;
 
     public delegate void OnItemChange();
     public OnItemChange onItemChangeCallback;
@@ -28,6 +30,7 @@ public class Inventory : MonoBehaviour
     public GameObject itemSlot;
     public GameObject itemDrop;
     public TextMeshProUGUI typeText;
+    public TextMeshProUGUI weightText;
 
     public int actualType = 1;
     private string actualTypeName = "Equipment";
@@ -42,40 +45,49 @@ public class Inventory : MonoBehaviour
 
             foreach (Item item in items) Debug.Log(item.name);
 
-            Debug.Log(EqItemCheck("Super Tarcza", 1,true));
+            Debug.Log(EqItemCheck("Super Tarcza"));
         }
     }
 
-    public bool EqItemCheck(string itemName, int count = 1, bool delete = false)
+    public int EqItemCheck(string itemName, int count = 0)
     {
         foreach (Item item in items) if (item.name == itemName)
             {
-                if (delete) { items.Remove(item); }
-                return true;
+                if (count != 0)
+                {
+                    item.AddItem(count);
+                }
+
+                return item.GetAmount();
             }
-        return false;
+        return 0;
     }
 
-    public bool AddItem(Item item)
+    public bool AddItem(Item item, int count = 1)
     {
         if (!item.isDefaultImte)
         {
-            items.Add(item);
+            if (EqItemCheck(item.name, count) > 0) Debug.Log("Dodawanie istniejacego itemu " + item.name);
+            else
+            {
+                items.Add(item);
 
-            //if (onItemChangeCallback != null) onItemChangeCallback.Invoke();
+                //if (onItemChangeCallback != null) onItemChangeCallback.Invoke();
 
-            InventoryRefresh();
+                InventoryRefresh();
 
-            Debug.Log("Dodanie itemu o nazwie " + item.name + " do wyposażenia");
+                Debug.Log("Dodanie nowego itemu o nazwie " + item.name + " do wyposażenia");
+            }
         }
         return true;
     }
 
-    public void RemoveItem(Item item, bool drop = false)
+    public void RemoveItem(Item item, int count = 1 ,bool drop = false)
     {
         if (drop) DropItem(item);
 
-        items.Remove(item);
+        if (item.GetAmount() > 1) item.AddItem(-count);
+        else items.Remove(item);
 
         Debug.Log("Usuwanie itemu o nazwie " + item.name);
 
@@ -102,11 +114,13 @@ public class Inventory : MonoBehaviour
 
     public void DrawItems()
     {
+        float ItemsWeight = 0;
+
         foreach (Item item in items)
         {
             int temp = (Convert.ToInt32(item.type)) + 1;
 
-            Debug.Log(temp + " == " + actualType);
+            //Debug.Log(temp + " == " + actualType);
 
             if (temp == actualType)
             {
@@ -117,8 +131,14 @@ public class Inventory : MonoBehaviour
                 newItemSlot.transform.parent = itemsParent.transform;
 
                 newItemSlot.AddItem(item);
+
+                ItemsWeight += (item.weight * item.GetAmount());
             }
         }
+
+        currentWeight = ItemsWeight;
+
+        weightText.text = "Bagaż " + currentWeight.ToString() + "/" + weightLimit;
     }
 
     public void DeleteSlots(Transform slot)

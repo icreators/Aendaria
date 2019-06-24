@@ -29,7 +29,7 @@ public class Quest1 : MonoBehaviour
         {
             if(dialManager.Once("13"))
                 questManager.AddProgress("Skryba","polski",1);
-            if(Inventory.instance.EqItemCheck("Marchew"))
+            if(Inventory.instance.EqItemCheck("Marchew") > 0)
                 questManager.AddProgress("Skryba","marchew",1);
         }
 
