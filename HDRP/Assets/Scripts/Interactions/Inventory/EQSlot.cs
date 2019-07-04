@@ -37,7 +37,7 @@ public class EQSlot : MonoBehaviour
 
     public void OnRemoveButton(bool drop)
     {
-        Inventory.instance.RemoveItem(item, drop);
+        Inventory.instance.RemoveItem(item, 1, drop);
     }
 
     public void UseItem()

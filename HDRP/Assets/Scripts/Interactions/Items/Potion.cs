@@ -11,6 +11,13 @@ public class Potion : Item
     public int potionStrength = 20;
     public int effectTime = 120;
 
+    public override string GetStats()
+    {
+        return "Waga: " + weight +
+        "\nMoc eliksiru: " + potionStrength +
+        "\nCzas trwania: " + effectTime;
+    }
+
     public override void Use()
     {
         base.Use();

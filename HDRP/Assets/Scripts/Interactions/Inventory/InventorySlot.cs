@@ -14,6 +14,8 @@ public class InventorySlot : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI itemName; 
     [SerializeField] TextMeshProUGUI itemDescription;
+    [SerializeField] TextMeshProUGUI itemStats;
+    [SerializeField] TextMeshProUGUI itemAmount;
 
     Animator animator;
 
@@ -34,8 +36,12 @@ public class InventorySlot : MonoBehaviour
         removeButton.interactable = true;
         itemName.text = item.name;
         itemDescription.text = item.description;
+        itemStats.text = item.GetStats();
+
+        itemAmount.text = item.GetAmount().ToString();
 
         itemDescription.gameObject.SetActive(false);
+        itemStats.gameObject.SetActive(true);
     }
 
     public void ClearSlot()
@@ -50,7 +56,7 @@ public class InventorySlot : MonoBehaviour
 
     public void OnRemoveButton(bool drop)
     {
-        Inventory.instance.RemoveItem(item, drop);
+        Inventory.instance.RemoveItem(item, 1, drop);
     }
 
     public void UseItem()
@@ -60,7 +66,7 @@ public class InventorySlot : MonoBehaviour
 
     public void MouseEnter()
     {
-        //itemName.gameObject.SetActive(false);
+        itemStats.gameObject.SetActive(false);
         itemDescription.gameObject.SetActive(true);
 
         animator.SetTrigger("Dup");
@@ -68,8 +74,8 @@ public class InventorySlot : MonoBehaviour
 
     public void MouseExit()
     {
-        //itemName.gameObject.SetActive(true);
         itemDescription.gameObject.SetActive(false);
+        itemStats.gameObject.SetActive(true);
 
         animator.SetTrigger("Ddown");
     }
