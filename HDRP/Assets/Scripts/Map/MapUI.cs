@@ -8,9 +8,12 @@ public class MapUI : MonoBehaviour
     private SkillsWindow win=new SkillsWindow();
     public bool isVisible=true;
 
+    public Transform player;
+
     GameObject map;
     GameObject circle;
     GameObject panel;
+    GameObject back;
 
     float offx=0.5f;
     float offy=0.5f;
@@ -25,30 +28,35 @@ public class MapUI : MonoBehaviour
     void Start()
     {
         map=GameObject.Find("MapInt/Panel/LMAP");
-        circle=GameObject.Find("MapInt/Panel/Circle");
+        circle=GameObject.Find("MapInt/Circle");
         panel=GameObject.Find("MapInt/Panel");
+        back=GameObject.Find("MapInt/Circle/back");
     }
 
-
+    bool start=false;
 
     void Update()
     {    
-    
-        if (Input.GetButtonDown("Map"))
+        if (Input.GetButtonDown("Map")||start==false)
         {
             isVisible=!isVisible;
+            start=true;
         }
         if(isVisible)
         {
-            panel.SetActive(true);
+            panel.SetActive(true); 
+            //Debug.Log(player.position);
             updateMap();
         }else
         {
             panel.SetActive(false);
         }
-    
+
+        mapcircle();
 
         
+       
+
         //centerx=(1280.0f*(1.0f-zoom))*0.5f;
         //centery=(720.0f*(1.0f-zoom))*0.5f;
         //map.GetComponent<RectTransform>().sizeDelta=    win.Locate(new Vector2(1280.0f/zoom,1280.0f/zoom));
@@ -62,6 +70,8 @@ public class MapUI : MonoBehaviour
     }
     void updateMap()
     {
+        set(player.position.x,player.position.z);
+
         zoom+=Input.GetAxis("Mouse ScrollWheel")/5.0f;
         if(zoom>1.0f)
             zoom=1.0f;
@@ -73,11 +83,17 @@ public class MapUI : MonoBehaviour
         mat.SetFloat("_OffsetX", offx);
         mat.SetFloat("_OffsetY", offy);
 
+        //mat.SetFloat("_pointX", (float)2.315 - pointPos.x);
+        //mat.SetFloat("_pointY", (float)1.263 - pointPos.y);
+
         mat.SetFloat("_pointX", pointPos.x);
         mat.SetFloat("_pointY", pointPos.y);
 
-        map.GetComponent<Image>().material = mat;        
+        map.GetComponent<Image>().material = mat;       
+
     }
+
+    
 
     public void set(float nowX,float nowY)
     {
@@ -98,5 +114,21 @@ public class MapUI : MonoBehaviour
             offy=0.0f;
         else if(offy>1.0f)
             offy=1.0f;
+    }
+
+    void mapcircle()
+    {
+        Material mat = Instantiate(circle.GetComponent<Image>().material);
+
+        pointPos=MapPoint.instance.playerCirclePosition(player.position.x,player.position.z);
+
+        mat.SetFloat("_OffsetX", pointPos.x);
+        mat.SetFloat("_OffsetY", pointPos.y);
+        mat.SetFloat("_Zoom", (zoom+0.3f)*10.0f);
+
+        circle.transform.rotation = Quaternion.Euler(0, 0, 360f-(player.rotation.eulerAngles.y-180f));
+        back.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        circle.GetComponent<Image>().material = mat;       
     }
 }

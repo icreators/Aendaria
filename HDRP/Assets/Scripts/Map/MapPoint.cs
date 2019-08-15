@@ -25,6 +25,7 @@ public class MapPoint : MonoBehaviour
     //public float shaderPointPrecisionYEnd=0.485f;         0.375f          0,113 diffrence
     //cropp 0,774f
 
+
     public float gamePlayerPrecisionXStart;
     public float gamePlayerPrecisionXEnd;
     public float gamePlayerPrecisionYStart;
@@ -35,15 +36,34 @@ public class MapPoint : MonoBehaviour
 
     public Vector2 playerpositionPoint(float nowX,float nowY)
     {
-        return playerPosition( nowX, nowY)+new Vector2(Xdiffrence,Ydiffrence);
+        //return playerPosition( nowX, nowY)+new Vector2(Xdiffrence,Ydiffrence);
+        return playerPosition( nowX, nowY);
     }
 
     public Vector2 playerPosition(float nowX,float nowY)
     {
         Vector2 pos=new Vector2();
         pos.x=procent(gamePlayerPrecisionXStart,gamePlayerPrecisionXEnd,nowX);
-        pos.y=0.113f+procent(gamePlayerPrecisionYStart,gamePlayerPrecisionYEnd,nowY)*0.774f;
+        //pos.y=0.113f+procent(gamePlayerPrecisionYStart,gamePlayerPrecisionYEnd,nowY)*0.774f;
+        pos.y=(procent(gamePlayerPrecisionYStart,gamePlayerPrecisionYEnd,nowY)*0.774f);
+        //compositing
+
+        pos.y=1.265f-pos.y;
+        pos.x=2.315f-pos.x;
+
+
         return pos;
+    }
+
+    public Vector2 playerCirclePosition(float nowX,float nowY)
+    {
+        Vector2 pos=new Vector2();
+        pos.x=procent(gamePlayerPrecisionXStart,gamePlayerPrecisionXEnd,nowX);
+        pos.y=(procent(gamePlayerPrecisionYStart,gamePlayerPrecisionYEnd,nowY)*0.774f);
+        
+        pos.y=pos.y+0.113f;
+        return pos;
+
     }
 
 
@@ -51,7 +71,8 @@ public class MapPoint : MonoBehaviour
     {
         float a=now-from; //aktualna pozycja
         float b=to-from; //maksimum pozycji
-        return b/a;
+        //Debug.Log("from: "+from+" to: "+to+" now: "+now);
+        return a/b;
     }
 
 }

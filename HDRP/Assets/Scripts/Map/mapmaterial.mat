@@ -57,7 +57,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Img:
         m_Texture: {fileID: 2800000, guid: 298e8f9478c21fd4987ef7e69971bbb7, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0, y: 1}
         m_Offset: {x: 0, y: 0}
     - _IridescenceMaskMap:
         m_Texture: {fileID: 0}
@@ -182,8 +182,8 @@ Material:
     - _Metallic: 0
     - _NormalMapSpace: 0
     - _NormalScale: 1
-    - _OffsetX: 0.2
-    - _OffsetY: 0.14
+    - _OffsetX: 0
+    - _OffsetY: 0.11
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
     - _PPDMinSamples: 5
@@ -227,10 +227,10 @@ Material:
     - _ZTestGBuffer: 4
     - _ZTestModeDistortion: 8
     - _ZWrite: 1
-    - _Zoom: 1.35
+    - _Zoom: 0.58
     - _pointLarge: 20.1
-    - _pointX: 2.315
-    - _pointY: 1.262
+    - _pointX: 2.32
+    - _pointY: 1.25
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
