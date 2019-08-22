@@ -38,7 +38,14 @@ public class QuestUI : MonoBehaviour
     {
         if (Input.GetButtonDown("Quests"))
         {
-            QuestOnOff();
+            if(InterfaceManager.instance.isAnyActiveInterface&&UIVisible)
+                InterfaceManager.instance.isAnyActiveInterface=false;
+            
+            if(!InterfaceManager.instance.isAnyActiveInterface||UIVisible)
+                QuestOnOff();
+
+            if(UIVisible)
+                InterfaceManager.instance.isAnyActiveInterface=true;
         }
         if(UIVisible)
         {

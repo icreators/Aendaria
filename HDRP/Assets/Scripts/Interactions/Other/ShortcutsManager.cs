@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using WindowsInput;
+
 
 public class ShortcutsManager : MonoBehaviour
 {
@@ -13,8 +15,12 @@ public class ShortcutsManager : MonoBehaviour
 
     Canvas shortcutInterface;
 
+    InputSimulator IS;
+
     private void Start()
     {
+        IS = new InputSimulator();
+
         GameObject.Find("Interfaces/Shortcuts").SetActive(true);
         shortcutInterface = GameObject.Find("Interfaces/Shortcuts").GetComponent<Canvas>();
 
@@ -59,17 +65,31 @@ public class ShortcutsManager : MonoBehaviour
         }
     }
 
+    public void execute(int a)
+    {
+        if(a==2)
+            IS.Keyboard.KeyPress(WindowsInput.Native.VirtualKeyCode.VK_P);
+        if(a==3)
+            IS.Keyboard.KeyPress(WindowsInput.Native.VirtualKeyCode.VK_Q);
+        if(a==4)
+            IS.Keyboard.KeyPress(WindowsInput.Native.VirtualKeyCode.VK_M);  
+        
+    }
     public void OnBackgroundEnter(int scChouise)
     {
         shortcutChoise = (ShortcutChoise)scChouise;
 
         shortcutsBackgrounds[scChouise-1].color = new Color(255, 255, 255, .3f);
+
+        execute(scChouise);
     }
     public void OnBackgroundExit(int scChouise)
     {
         shortcutsBackgrounds[scChouise - 1].color = new Color(255, 255, 255, 0);
 
         shortcutChoise = ShortcutChoise.Nothing;
+        
+        execute(scChouise);
     }
 
     public void GetSword(bool putDown = false)

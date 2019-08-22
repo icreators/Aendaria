@@ -39,8 +39,18 @@ public class MapUI : MonoBehaviour
     {    
         if (Input.GetButtonDown("Map")||start==false)
         {
-            isVisible=!isVisible;
-            start=true;
+            if(InterfaceManager.instance.isAnyActiveInterface&&isVisible)
+                InterfaceManager.instance.isAnyActiveInterface=false;
+            
+            if(!InterfaceManager.instance.isAnyActiveInterface||isVisible||start==false)
+            {
+                isVisible=!isVisible;
+                start=true;                
+            }
+
+            if(isVisible)
+                InterfaceManager.instance.isAnyActiveInterface=true;
+
         }
         if(isVisible)
         {

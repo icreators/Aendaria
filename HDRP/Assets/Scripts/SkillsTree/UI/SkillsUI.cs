@@ -24,7 +24,16 @@ public class SkillsUI : MonoBehaviour
     {
         if (Input.GetButtonDown("SkillsTree"))
         {
-            Open();
+            Debug.Log("Tak, kliknięto");
+
+            if(InterfaceManager.instance.isAnyActiveInterface&&isVisible)
+                InterfaceManager.instance.isAnyActiveInterface=false;
+            
+            if(!InterfaceManager.instance.isAnyActiveInterface||isVisible)
+                Open();
+
+            if(isVisible)
+                InterfaceManager.instance.isAnyActiveInterface=true;
         }
         if(isVisible)
         {
